@@ -58,6 +58,14 @@ export default function register(Component, tagName, propNames, options) {
 		});
 	});
 
+	if( options && options.extends ) {
+		return customElements.define(
+			tagName || Component.tagName || Component.displayName || Component.name,
+			PreactElement,
+			{extends: options.extends.toString() }
+		)
+	}
+
 	return customElements.define(
 		tagName || Component.tagName || Component.displayName || Component.name,
 		PreactElement
